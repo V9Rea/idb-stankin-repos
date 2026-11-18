@@ -5,6 +5,8 @@ from laba1.ProductParam import ProductParam
 from laba1.Profile import Profile
 from laba1.account import Account
 from laba1.description import Description
+import json
+import os
 import re
 
 
@@ -207,8 +209,8 @@ def see_accounts(accounts: list[Account]):
         print("Аккаунтов нет!")
         return
 
+    print("------ accounts ------")
     for num, account in enumerate(accounts):
-        print("------ accounts ------")
         print(f"{num+1}. {account.get_profile().get_name()}")
     print("----------------------")
 
@@ -232,8 +234,8 @@ def see_payment_methods(payment_methods: list[PaymentMethod]):
         print("Способов оплаты нет!")
         return
 
+    print("------ payment methods ------")
     for num, method in enumerate(payment_methods):
-        print("------ payment methods ------")
         print(f"{num+1}. {method.get_owner_name()} {method.get_card_number()} {method.get_expiry_date()}")
     print("----------------------")
 
@@ -351,9 +353,41 @@ def edit_account(accounts: list[Account]):
         else:
             print("Введите корректный номер пункта!")
 
+def create_accounts_from_data(accounts_data: list) -> list[Account]:
+    accounts = []
+    for account_data in accounts_data:
+        profile_data = account_data["profile"]
+        profile = Profile(profile_data["name"], profile_data["email"], profile_data["phone"], profile_data["password"])
+        payment_methods = []
+        for method_data in account_data["payment_methods"]:
+            payment_methods.append(PaymentMethod(
+                method_data["card_number"],
+                method_data["expiry_date"],
+                int(method_data["cvv"]),
+                method_data["owner_name"]
+            ))
+        accounts.append(Account(profile, payment_methods))
+    return accounts
+
+def create_products_from_data(products_data: list) -> list[Product]:
+    products = []
+    for product_data in products_data:
+        image_data = product_data["description"]["image"]
+        description = Description(Image(image_data["name"], image_data["content"]), product_data["description"]["text"])
+        product_params = []
+        for param_data in product_data["product_params"]:
+            product_params.append(ProductParam(param_data["name"], param_data["value"]))
+        products.append(Product(product_data["name"], float(product_data["price"]), description, product_params, []))
+    return products
+
+def load_test_data() -> tuple[list[Account], list[Product]]:
+    data_path = os.path.join(os.path.dirname(__file__), "test_data.json")
+    with open(data_path, encoding="utf-8") as file:
+        data = json.load(file)
+    return create_accounts_from_data(data["accounts"]), create_products_from_data(data["products"])
+
 def main():
-    accounts: list[Account] = []
-    products: list[Product] = []
+    accounts, products = load_test_data()
     while True:
         main_menu()
         try:
