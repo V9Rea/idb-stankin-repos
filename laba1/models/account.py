@@ -1,9 +1,9 @@
-﻿from laba1.Order import Order
-from laba1.PaymentMethod import PaymentMethod
-from laba1.Product import Product
-from laba1.Profile import Profile
-from laba1.Review import Review
-from laba1.ServiceAppeal import ServiceAppeal
+﻿from laba1.models.Order import Order
+from laba1.models.PaymentMethod import PaymentMethod
+from laba1.models.Product import Product
+from laba1.models.Profile import Profile
+from laba1.models.Review import Review
+from laba1.models.ServiceAppeal import ServiceAppeal
 
 
 class Account:

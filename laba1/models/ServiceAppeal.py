@@ -1,6 +1,6 @@
 ﻿import datetime
 
-from laba1.AppealMessage import AppealMessage
+from laba1.models.AppealMessage import AppealMessage
 
 
 class ServiceAppeal:

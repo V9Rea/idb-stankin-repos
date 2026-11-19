@@ -1,6 +1,6 @@
-﻿from laba1.ProductParam import ProductParam
-from laba1.Review import Review
-from laba1.description import Description
+﻿from laba1.models.ProductParam import ProductParam
+from laba1.models.Review import Review
+from laba1.models.description import Description
 
 
 class Product:

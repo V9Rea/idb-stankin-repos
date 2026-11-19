@@ -1,4 +1,4 @@
-﻿from laba1.Image import Image
+﻿from laba1.models.Image import Image
 
 
 class Description:

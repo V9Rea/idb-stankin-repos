@@ -1,10 +1,10 @@
-﻿from laba1.Image import Image
-from laba1.PaymentMethod import PaymentMethod
-from laba1.Product import Product
-from laba1.ProductParam import ProductParam
-from laba1.Profile import Profile
-from laba1.account import Account
-from laba1.description import Description
+﻿from laba1.models.Image import Image
+from laba1.models.PaymentMethod import PaymentMethod
+from laba1.models.Product import Product
+from laba1.models.ProductParam import ProductParam
+from laba1.models.Profile import Profile
+from laba1.models.account import Account
+from laba1.models.description import Description
 import json
 import os
 import re
@@ -205,6 +205,13 @@ def main_menu():
     """)
 
 def see_accounts(accounts: list[Account]):
+    """
+    Выводит список аккаунтов или уведомляет, если их нет
+    Args:
+        accounts: список товаров
+
+    """
+
     if len(accounts) == 0:
         print("Аккаунтов нет!")
         return
@@ -215,18 +222,26 @@ def see_accounts(accounts: list[Account]):
     print("----------------------")
 
 def see_products(products: list[Product]):
+    """
+    Выводит список товаров или уведомляет, если их нет
+    Args:
+        products: список товаров
+
+    """
+
     if len(products) == 0:
         print("Товаров нет!")
         return
 
+    print("------ products ------")
     for num, product in enumerate(products):
-        print("------ products ------")
         print(f"{num+1}. {product.get_name()}")
         print(f"Цена: {product.get_price()}")
         print(f"Описание: {product.get_description().get_text()}")
         print(f"Изображение: {product.get_description().get_image().get_name()}")
         for param in product.get_product_params():
             print(f"{param.get_name()}: {param.get_value()}")
+        print("\n")
     print("----------------------")
 
 def see_payment_methods(payment_methods: list[PaymentMethod]):
@@ -302,6 +317,13 @@ def edit_menu():
     """)
 
 def edit_account(accounts: list[Account]):
+    """
+    Запускает меню изменения аккаунта
+
+    Args:
+        accounts: список аккаунтов
+
+    """
     if len(accounts) == 0:
         print("Аккаунтов нет!")
         return
@@ -355,6 +377,14 @@ def edit_account(accounts: list[Account]):
             print("Введите корректный номер пункта!")
 
 def create_accounts_from_data(accounts_data: list) -> list[Account]:
+    """
+    Создает объекты аккаунтов по данным из файла
+    Args:
+        accounts_data: список данных аккоунтов из файла
+
+    Return:
+        кортеж из списка аккаунтов
+    """
     accounts = []
     for account_data in accounts_data:
         profile_data = account_data["profile"]
@@ -371,6 +401,15 @@ def create_accounts_from_data(accounts_data: list) -> list[Account]:
     return accounts
 
 def create_products_from_data(products_data: list) -> list[Product]:
+    """
+    Создает объекты товаров по данным из файла
+    Args:
+        products_data: список данных товаров из файла
+
+    Return:
+        кортеж из списка продуктов
+    """
+
     products = []
     for product_data in products_data:
         image_data = product_data["description"]["image"]
@@ -382,12 +421,20 @@ def create_products_from_data(products_data: list) -> list[Product]:
     return products
 
 def load_test_data() -> tuple[list[Account], list[Product]]:
+    """
+    Загружает данные из файла
+
+    Return:
+        кортеж из списка аккаунтов и списка продуктов
+    """
+
     data_path = os.path.join(os.path.dirname(__file__), "test_data.json")
     with open(data_path, encoding="utf-8") as file:
         data = json.load(file)
     return create_accounts_from_data(data["accounts"]), create_products_from_data(data["products"])
 
 def main():
+    """Получает тестовые данные из файла и запускает главное меню"""
     accounts, products = load_test_data()
     while True:
         main_menu()

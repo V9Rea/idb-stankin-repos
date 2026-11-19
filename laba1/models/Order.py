@@ -1,6 +1,6 @@
 ﻿import datetime
 
-from laba1.Product import Product
+from laba1.models.Product import Product
 
 
 class Order:
