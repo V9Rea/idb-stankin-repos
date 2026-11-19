@@ -1,5 +1,13 @@
 ﻿class ProductParam:
+    """Класс параметра товара"""
     def __init__(self, name:str, value:str):
+        """
+        Инициализирует объект описания
+
+        Args:
+            name: имя параметра
+            value: значение параметра
+        """
         self.name:str = name
         self.value:str = value
 

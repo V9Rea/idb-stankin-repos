@@ -7,14 +7,28 @@ from laba1.ServiceAppeal import ServiceAppeal
 
 
 class Account:
-    def __init__(self, profile: Profile, payment_methods: list[PaymentMethod]=None, favourites: list[Product]=None, basket : list[Product]=None, orders: list[Order]=None, reviews: list[Review]=None, service_appeals: list[ServiceAppeal]=None) -> None:
+    """Класс аккаунта пользователя"""
+
+    def __init__(self, profile: Profile, payment_methods: list[PaymentMethod]=None) -> None:
+        """
+        Инициализация объекта аккаунта
+
+        Args:
+            profile: профиль пользователя
+            payment_methods: способы оплаты
+        """
+
         self._profile: Profile = profile
-        self._favourites: list[Product] = favourites
-        self._payment_methods: list[PaymentMethod] = payment_methods
-        self._basket : list[Product] = basket
-        self._orders: list[Order] = orders
-        self._reviews: list[Review] = reviews
-        self._service_appeals: list[ServiceAppeal] = service_appeals
+        self._favourites: list[Product] = []
+        self._basket : list[Product] = []
+        self._orders: list[Order] = []
+        self._reviews: list[Review] = []
+        self._service_appeals: list[ServiceAppeal] = []
+
+        if payment_methods is None:
+            self._payment_methods: list[PaymentMethod] = []
+        else:
+            self._payment_methods: list[PaymentMethod] = payment_methods
 
     def get_profile(self) -> Profile:
         return self._profile

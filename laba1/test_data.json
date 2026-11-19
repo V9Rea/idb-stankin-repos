@@ -1,0 +1,92 @@
+{
+  "accounts": [
+    {
+      "profile": {
+        "name": "Ivan_Petrov",
+        "email": "ivan@mail.ru",
+        "phone": "7 999 111-22-33",
+        "password": "secret1"
+      },
+      "payment_methods": [
+        {
+          "card_number": "1111 2222 3333 4444",
+          "expiry_date": "12/28",
+          "cvv": 123,
+          "owner_name": "IVAN PETROV"
+        },
+        {
+          "card_number": "5555 6666 7777 8888",
+          "expiry_date": "01/29",
+          "cvv": 456,
+          "owner_name": "IVAN PETROV"
+        }
+      ]
+    },
+    {
+      "profile": {
+        "name": "Anna_Sidorova",
+        "email": "anna@mail.ru",
+        "phone": "7 900 555-66-77",
+        "password": "secret2"
+      },
+      "payment_methods": [
+        {
+          "card_number": "9999 8888 7777 6666",
+          "expiry_date": "06/27",
+          "cvv": 789,
+          "owner_name": "ANNA SIDOROVA"
+        },
+        {
+          "card_number": "1212 3434 5656 7878",
+          "expiry_date": "11/30",
+          "cvv": 321,
+          "owner_name": "ANNA SIDOROVA"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "name": "Phone",
+      "price": 19990.0,
+      "description": {
+        "text": "Смартфон",
+        "image": {
+          "name": "phone.png",
+          "content": "phone-image"
+        }
+      },
+      "product_params": [
+        {
+          "name": "color",
+          "value": "black"
+        },
+        {
+          "name": "memory",
+          "value": "128"
+        }
+      ]
+    },
+    {
+      "name": "Laptop",
+      "price": 89990.0,
+      "description": {
+        "text": "Ноутбук",
+        "image": {
+          "name": "laptop.png",
+          "content": "laptop-image"
+        }
+      },
+      "product_params": [
+        {
+          "name": "color",
+          "value": "silver"
+        },
+        {
+          "name": "ram",
+          "value": "16"
+        }
+      ]
+    }
+  ]
+}

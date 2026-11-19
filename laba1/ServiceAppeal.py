@@ -4,7 +4,12 @@ from laba1.AppealMessage import AppealMessage
 
 
 class ServiceAppeal:
+    """Класс чата сервисной поддержки"""
     def __init__(self):
+        """
+        Инициализирует объект чата сервисной поддержки
+        """
+
         self._created_at: datetime.datetime = datetime.datetime.now()
         self._appeal_message: list[AppealMessage] = []
 

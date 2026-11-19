@@ -36,6 +36,16 @@ Returns:
     true - значение валидное, false - значение не валидное
 """
 def is_input_signa_valid(input_signal: float) -> bool:
+    """
+    Валидирует выходящий сигнал датчика
+
+    Args:
+        input_signal: выходной сигнал датчика
+
+    Returns:
+        true - значение валидное, false - значение не валидное
+    """
+
     if type(input_signal) != float:
         print("Неправильное значение сигнала!")
         return False

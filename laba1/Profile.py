@@ -1,5 +1,15 @@
 ﻿class Profile:
+    """Класс профиля аккаунта"""
     def __init__(self, name: str, email: str, phone: str, password: str):
+        """
+        Инициализирует объект профиля
+
+        Args:
+            name: имя пользователя
+            email: почта пользователя
+            phone: телефон пользователя
+            password: пароль аккаунта
+        """
         self._name: str = name
         self._email: str = email
         self._phone: str = phone

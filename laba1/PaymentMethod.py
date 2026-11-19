@@ -2,7 +2,17 @@
 
 
 class PaymentMethod:
+    """Класс способа оплаты"""
     def __init__(self, card_number: str, expiry_date: str, cvv: int, owner_name: str):
+        """
+        Инициализирует объект описания
+
+        Args:
+            card_number: номер карты
+            expiry_date: срок действия
+            cvv: код
+            owner_name: имя владельца
+        """
         self._card_number: str = card_number
         self._expiry_date: str = expiry_date
         self._cvv: int = cvv

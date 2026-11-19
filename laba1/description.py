@@ -2,7 +2,15 @@
 
 
 class Description:
+    """Класс описания """
     def __init__(self, image: Image, text: str):
+        """
+        Инициализирует объект описания
+
+        Args:
+            image: изображение
+            text: текст описания
+        """
         self.image: Image = image
         self.text: str = text
 

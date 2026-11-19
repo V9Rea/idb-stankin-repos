@@ -4,10 +4,22 @@ from laba1.Image import Image
 
 
 class AppealMessage:
-    def __init__(self, created_at: datetime.datetime, text:str, images: list[Image]):
-        self._created_at: datetime.datetime = created_at
+    """Класс Сообщения в чате с поддержкой"""
+    def __init__(self, text:str, images: list[Image]=None):
+        """
+        Инициализация сообщения в чате с поддержкой
+
+        Args:
+            text: текст сообщения
+            images: изображения в сообщении
+        """
+        self._created_at: datetime.datetime = datetime.datetime.now()
         self._text:str = text
-        self._images: list[Image] = images
+
+        if images is None:
+            self._images = []
+        else:
+            self._images = images
 
     def get_created_at(self) -> datetime.datetime:
         return self._created_at

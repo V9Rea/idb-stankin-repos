@@ -4,7 +4,18 @@ from laba1.Product import Product
 
 
 class Order:
+    """Класс заказа"""
     def __init__(self, created_at: datetime.datetime, pickup_date: datetime.datetime, price: float, products: list[Product], status: str) -> None:
+        """
+        Инициализирует объект pfrfpf
+
+        Args:
+            created_at: дата создания
+            pickup_date: дата получения
+            price: цена
+            products: товары
+            status: статус заказа
+        """
         self._created_at: datetime.datetime = created_at
         self._pickup_date: datetime.datetime = pickup_date
         self._price: float = price

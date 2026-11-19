@@ -4,7 +4,18 @@ from laba1.description import Description
 
 
 class Product:
+    """Класс товара"""
     def __init__(self, name: str, price: float, description: Description, product_params:list[ProductParam], review : list[Review]) -> None:
+        """
+        Инициализирует объект класса товар
+
+        Args:
+            name: изображение
+            price: текст описания
+            description: описание товара
+            product_params: параметры товара
+            review: отзывы на товар
+        """
         self._name: str = name
         self._price: float = price
         self._description: Description = description

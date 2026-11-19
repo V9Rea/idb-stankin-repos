@@ -1,5 +1,13 @@
 ﻿class Image:
+    """Класс изображения"""
     def __init__(self, name: str, content: str):
+        """
+        Инициализирует объект описания
+
+        Args:
+            name: имя изображения
+            content: содержание изображения
+        """
         self._name: str = name
         self._content: str = content
 

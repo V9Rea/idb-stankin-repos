@@ -2,7 +2,17 @@
 
 
 class Review:
+    """Класс отзыва"""
     def __init__(self, created_at:datetime.datetime, author_name:str, rate:int, review:str):
+        """
+        Инициализирует объект отзыва
+
+        Args:
+            created_at: дата создания отзыва
+            author_name: автор отзыва
+            rate: оценка
+            review: текст отзыва
+        """
         self._created_at:datetime.datetime = created_at
         self._author_name:str = author_name
         self._rate:int = rate

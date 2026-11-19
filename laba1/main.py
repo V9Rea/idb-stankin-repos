@@ -242,6 +242,7 @@ def see_payment_methods(payment_methods: list[PaymentMethod]):
 def edit_profile_name(profile: Profile):
     name_pattern = r"[A-Za-zА-яа-я]+"
     print("--Изменение имени--")
+
     while True:
         name = input("Введите имя (одно слово кириллицей или латиницей): ")
         if not re.match(name_pattern, name):
