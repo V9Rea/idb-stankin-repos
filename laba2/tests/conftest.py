@@ -30,8 +30,13 @@ def invalid_lines() -> list[str]:
 
 @pytest.fixture(scope="session")
 def test_data_filepath() -> str:
-    return r"laba2\tests\test_data.txt"
+    return r"laba2\tests\test_files\test_data.txt"
+
+@pytest.fixture(scope="session")
+def empty_test_file_filepath() -> str:
+    return r"laba2\tests\test_files\empty_test_file.txt"
 
 @pytest.fixture(scope="session")
 def incorrect_data_filepath() -> str:
     return "wrong_file_path.txt"
+

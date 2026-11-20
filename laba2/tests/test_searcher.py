@@ -1,4 +1,4 @@
-﻿# tests/test_validator.py
+﻿# tests/test_searcher.py
 import pytest
 
 from laba2.main import check_string, search_math_line_in_file
@@ -24,12 +24,18 @@ def test_search_in_file(test_data_filepath):
         "2x - 3y + 4z",
         "(a + b) * (a - b)",
         "-((3a + 4b) / 2) + 15",
-        "100 : (25 - 5 * (2 + 1))]"
+        "100 : (25 - 5 * (2 + 1))",
+        "10 - 3"
     ]
 
-    print(search_math_line_in_file(test_data_filepath))
+    result = search_math_line_in_file(test_data_filepath)
 
-    assert search_math_line_in_file(test_data_filepath), output_lines
+    assert result == output_lines, f"Не соответствует эталону: {result!r}"
+
+def test_empty_file(empty_test_file_filepath):
+    result = search_math_line_in_file(empty_test_file_filepath)
+    assert result == [], f"должен быть пустым: {result!r}"
 
 def test_wrong_file_path(incorrect_data_filepath):
-    assert search_math_line_in_file(incorrect_data_filepath) is None, f"должен быть невалидным: {incorrect_data_filepath!r}"
+    result = search_math_line_in_file(incorrect_data_filepath)
+    assert result is None, f"должен быть None: {incorrect_data_filepath!r}"
